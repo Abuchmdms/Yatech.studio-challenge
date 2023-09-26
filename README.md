@@ -1,17 +1,17 @@
 # Yatech.studio-challenge
 Creating an authentication feature with refresh tokens and access tokens requires a comprehensive backend implementation. I'll provide you with a high-level overview of how to set up such a system, including code snippets and a basic API documentation template.
 
-Note: This is a simplified example, and in a production environment, you should consider security best practices, such as using HTTPS, storing secrets securely, and implementing user registration and password recovery features.
+**Note:** This is a simplified example, and in a production environment, you should consider security best practices, such as using HTTPS, storing secrets securely, and implementing user registration and password recovery features.
 
-Backend Implementation
+## Backend Implementation
 We'll use Python and the Flask framework for this example. You can adapt the code to your preferred language and framework.
 Set up a virtual environment and install necessary packages:
-bash
-Copy code
+### 1. Set up a virtual environment and install necessary packages:
+```ruby
 pip install flask flask-restful python-jose
-Create a Flask app and define routes for user authentication.
-python
-Copy code
+```
+### 2. Create a Flask app and define routes for user authentication.
+```ruby
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 import jwt
@@ -106,32 +106,21 @@ api.add_resource(ProtectedResource, "/protected")
 
 if __name__ == "__main__":
     app.run(debug=True)
-This code sets up a simple Flask API with two endpoints: /login for user authentication and /protected as a protected resource that requires a valid access token.
 
-API Documentation
+```
+This code sets up a simple Flask API with two endpoints: ***/login** for user authentication and **/protected** as a protected resource that requires a valid access token. 
+## API Documentation
 Here's a basic API documentation template:
 
 User Authentication API
-1. Login
-URL: /login
-Method: POST
-Request Body:
-username (string) - User's username
-password (string) - User's password
-Response:
-access_token (string) - JWT access token (valid for 15 minutes)
-refresh_token (string) - JWT refresh token (valid for 30 days)
-Authentication: None
-2. Protected Resource
-URL: /protected
-Method: GET
-Response:
-message (string) - A greeting message for the authenticated user
-Authentication: Bearer token with a valid access token
-Error Handling
-401 Unauthorized: Invalid credentials or missing token.
-403 Forbidden: Token has expired.
-404 Not Found: User not found.
-Remember that in a production environment, you should also consider security measures like rate limiting, proper password hashing, and more robust user management features.
+### 1. Login
 
-This is a basic implementation of token-based authentication with Flask. Depending on your project requirements, you may need to extend it with features like user registration, password reset, and user management. Additionally, ensure proper security practices and adapt the code for your specific use case.
+- URL: /login
+- Method: POST
+- Request Body:
+    - username (string) - User's username
+    - password (string) - User's password
+- Response:
+    - access_token (string) - JWT access token (valid for 15 minutes)
+    - refresh_token (string) - JWT refresh token (valid for 30 days)
+- Authentication: None
